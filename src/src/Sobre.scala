@@ -1,10 +1,11 @@
 
 object Sobre {
 
-    def sobre(): Unit = {
-      println("Versão 0.1")
-      println("O teu melhor melhor amigo na hora do estudo")
-      println("Desenvolvido por: João Polónio, Luís Pires e Tiago Torres")
-      println("Email: helpstudy@iscte.pt")
+    def sobre(): String = {
+      val ver = "Versão 0.1\n"
+      val moto = "O teu melhor melhor amigo na hora do estudo\n"
+      val dev = "Desenvolvido por: João Polónio, Luís Pires e Tiago Torres\n"
+      val email = "Email: helpstudy@iscte.pt"
+      ver + moto + dev + email
     }
 }
