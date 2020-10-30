@@ -1,7 +1,7 @@
 
-object Sobre {
+object About {
 
-    def sobre(): String = {
+    def about(): String = {
       val ver = "Versão 0.1\n"
       val moto = "O teu melhor melhor amigo na hora do estudo\n"
       val dev = "Desenvolvido por: João Polónio, Luís Pires e Tiago Torres\n"
