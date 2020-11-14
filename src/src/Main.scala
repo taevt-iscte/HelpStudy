@@ -1,7 +1,8 @@
-import Sobre.sobre
+import About.about
 
 object Main {
   def main(args: Array[String]): Unit = {
-    println(sobre())
+    println(about())
+
   }
 }
