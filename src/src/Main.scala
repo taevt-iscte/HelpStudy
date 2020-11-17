@@ -1,17 +1,28 @@
-import java.time.LocalDate
-
 import About.about
-import RemindersManager.sort_default
+
+import scala.annotation.tailrec
+import scala.io.StdIn.readLine
+import scala.sys.exit
 
 object Main {
+
+  def getUserInput: String = {
+    readLine.trim.toUpperCase
+  }
+
+  @tailrec
+  def mainLoop(): Unit = {
+    val input = getUserInput()
+    input match {
+    case "ABOUT" => print (about () );
+    case "ASK" =>
+    case "QUIT" => exit(0)
+    case _ =>
+  }
+    mainLoop()
+  }
+
   def main(args: Array[String]): Unit = {
-    //println(about()) ----FUNCIONA
-    val rems: RemindersManager = RemindersManager(List(("Titulo1", "Body1", 3, LocalDate.now()),
-      ("Titulo2", "Body2", 1, LocalDate.now()), ("Titulo3", "Body3", 2, LocalDate.now())))
-    //println(rems.sort_by_priority())
-    //println(rems.addReminder(("Titulo4", "Body4", 4, LocalDate.now())))
-    //println(rems.delReminder("Titulo2"))
-    //println(sort_default(rems))
-    //println(rems.searchReminder("Titulo7"))
+    mainLoop()
   }
 }
