@@ -29,7 +29,7 @@ object Deck {
   @tailrec
   def printCards(cards: List[Card]) : Unit = cards match {
     case Nil => Nil
-    case card :: tail => print("Q: " + card._1 + " A: " + card._2); printCards(tail)
+    case card :: tail => println(s"Q: $card._1 A: $card._2"); printCards(tail)
   }
 
 }
