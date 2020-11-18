@@ -24,9 +24,8 @@ object RemindersManager {
   type Body = String
   type Priority = Int
   type Date = LocalDate
-  type ID = Int
   type Points = Double
-  type Reminder = (Title, Body, Priority, Date, ID, Points)
+  type Reminder = (Title, Body, Priority, Date, Points)
   type Reminder_List = List[Reminder]
 
 
@@ -71,12 +70,12 @@ object RemindersManager {
   def sort_smart(rem_man: RemindersManager): RemindersManager = {
     //Algoritmo de complexidade
     //RemindersManager((rem_man.lst_rem.sortBy( r => (r._4, r._3))))
-    RemindersManager(smart_list(rem_man.lst_rem).sortBy(_._6).reverse)
+    RemindersManager(smart_list(rem_man.lst_rem).sortBy(_._5).reverse)
   }
 
   def smart_list(rems: List[Reminder]): List[Reminder] = rems match {
       case Nil => Nil
-      case head :: tail => (head._1, head._2, head._3, head._4, head._5, points(head)) :: smart_list(tail)
+      case head :: tail => (head._1, head._2, head._3, head._4, points(head)) :: smart_list(tail)
     }
 
   def points(rem: Reminder): Double = {
@@ -134,9 +133,9 @@ object RemindersManager {
   }*/
 
   def main(args: Array[String]): Unit = {
-    val rems: RemindersManager = RemindersManager(List(("Titulo1", "Body1", 3, LocalDate.now(), 1, 0.0),
-      ("Titulo2", "Body2", 1,LocalDate.parse("2020-11-19") , 2, 0.0), ("Titulo3", "Body3", 2, LocalDate.parse("2020-11-19"), 3, 0.0),
-      ("Titulo4", "Body4", 4, LocalDate.parse("2020-11-20"), 4, 0.0), ("Titulo5", "Body5", 4, LocalDate.parse("2020-11-25"), 5, 0.0)))
+    val rems: RemindersManager = RemindersManager(List(("Titulo1", "Body1", 3, LocalDate.now(), 0.0),
+      ("Titulo2", "Body2", 1,LocalDate.parse("2020-11-19") , 0.0), ("Titulo3", "Body3", 2, LocalDate.parse("2020-11-19"), 0.0),
+      ("Titulo4", "Body4", 4, LocalDate.parse("2020-11-20"), 0.0), ("Titulo5", "Body5", 4, LocalDate.parse("2020-11-25"), 0.0)))
     //println(rems.sort_by_priority())
     //println(rems.sort_by_date())
     //println(rems.addReminder(("Titulo4", "Body4", 4, LocalDate.now())))
