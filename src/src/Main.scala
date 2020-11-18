@@ -4,7 +4,7 @@ import scala.annotation.tailrec
 import scala.io.StdIn.readLine
 import scala.sys.exit
 
-object Main {
+/*object Main {
 
   def getUserInput: String = {
     readLine.trim.toUpperCase
@@ -25,4 +25,4 @@ object Main {
   def main(args: Array[String]): Unit = {
     mainLoop()
   }
-}
+}*/
