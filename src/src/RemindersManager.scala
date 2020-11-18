@@ -41,7 +41,12 @@ object RemindersManager {
 
   //-------------UPDATE------------------------
   def addReminder(rem_man: RemindersManager, new_rem: Reminder): RemindersManager = {
-    RemindersManager(new_rem :: rem_man.lst_rem)
+    if(new_rem._3 < 1 || new_rem._3 > 4) {
+      throw new IllegalArgumentException("Erro: A priordidade deve estar entre 1 e 4!")
+    }
+    else {
+      RemindersManager(new_rem :: rem_man.lst_rem)
+    }
   }
 
   def delReminder(rem_man: RemindersManager, title: String): RemindersManager = {
