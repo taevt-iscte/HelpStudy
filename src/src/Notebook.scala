@@ -33,6 +33,7 @@ object Notebook {
   def exportToFile(nb: Notebook, index: Int): Unit = {
     val note = nb.notes(index)
     val file = Paths.get(System.getProperty("user.dir"), note._3, note._1+".txt")
+    if (!file.getParent.toFile.exists()) file.getParent.toFile.mkdir()
     val pw = new PrintWriter(file.toFile)
     pw.write(note._2)
     pw.close()
