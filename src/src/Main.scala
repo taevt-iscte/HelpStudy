@@ -10,7 +10,7 @@ object Main {
     readLine.trim.toUpperCase
   }
 
-  @tailrec
+  /*@tailrec
   def mainLoop(): Unit = {
     val input = getUserInput()
     input match {
@@ -20,9 +20,14 @@ object Main {
     case _ =>
   }
     mainLoop()
-  }
+  }*/
 
   def main(args: Array[String]): Unit = {
-    mainLoop()
+//    mainLoop()
+    //TESTING
+
+    val nb = Notebook(List())
+    val newnb = nb.importFromFile("Testing.txt", "Cunit")
+    newnb.printNotes()
   }
 }

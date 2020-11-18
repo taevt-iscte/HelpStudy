@@ -12,6 +12,8 @@ case class Notebook (notes: List[Note]){
   def importFromFile(file: String, cunit: String): Notebook = Notebook.importFromFile(this, file, cunit)
 
   def exportToFile(index: Int): Unit = Notebook.exportToFile(this, index)
+
+  def printNotes(): Unit = Notebook.printNotes(this)
 }
 
 object Notebook {
@@ -23,7 +25,7 @@ object Notebook {
   def getNotesbyCUnit(nbook: Notebook, cunit: String): List[Note] = nbook.notes.filter(_._3 == cunit)
 
   def importFromFile(nb: Notebook, file: String, cunit: String): Notebook = {
-    val body = Source.fromFile(file).getLines.mkString
+    val body = Source.fromFile(Paths.get(file).toAbsolutePath.toString).getLines.mkString
     val newNote = (file.stripSuffix(".txt"), body, cunit)
     Notebook.addNote(nb, newNote)
   }
@@ -34,5 +36,10 @@ object Notebook {
     val pw = new PrintWriter(file.toFile)
     pw.write(note._2)
     pw.close()
+  }
+
+  def printNotes(nb: Notebook): Unit = nb.notes match {
+    case note :: tail => println(s"Title: ${note._1}\nBody: ${note._2}\nCunit: ${note._3}")
+    case _ =>
   }
 }
