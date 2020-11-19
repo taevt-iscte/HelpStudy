@@ -1,9 +1,10 @@
 import java.time.{LocalDate, LocalDateTime, LocalTime, Period}
 import java.time.temporal.ChronoUnit
-import scala.math._
 
+import scala.math._
 import RemindersManager.{Reminder, Reminder_List}
 
+import scala.None
 import scala.annotation.tailrec
 
 case class RemindersManager(val lst_rem: Reminder_List) {
@@ -49,10 +50,14 @@ object RemindersManager {
   }
 
   def delReminder(rem_man: RemindersManager, title: String): RemindersManager = {
-    RemindersManager(rem_man.lst_rem.filter( r => !r._1.equals(title)))
+    searchReminder(rem_man, title) match {
+      case Some(b) => RemindersManager(rem_man.lst_rem.filter(r => !r._1.equals(title)))
+      case None => /*System.err.println("Erro: Esse lembrete não existe")*/
+        throw new IllegalArgumentException("Erro: Esse lembrete não existe")
+    }
   }
 
-
+  //  throw new IllegalArgumentException("Erro: Esse lembrete não existe")
   //------------AUXILIAR------------------------------
   def searchReminder(rem_man: RemindersManager, title: String): Option[Reminder] = {
     Option((rem_man.lst_rem filter ( r => r._1.equals(title))) (0))
@@ -124,13 +129,13 @@ object RemindersManager {
     }
   }
 
-  /*def points_parabolic(rem: Reminder): Double = {
+  def points_gaussion(rem: Reminder): Double = {
     val today = LocalDate.now()
     val days = Period.between(today, rem._4).getDays()
-    val prior_points = rem._3.toFloat
+    val variancia = 4
+    1/sqrt(2*Math.PI*variancia)*Math.exp(-pow(days,2)/(2*variancia))
 
-    prior_points =
-  }*/
+  }
 
   def main(args: Array[String]): Unit = {
     val rems: RemindersManager = RemindersManager(List(("Titulo1", "Body1", 3, LocalDate.now(), 0.0),
@@ -142,7 +147,7 @@ object RemindersManager {
     //println(rems.delReminder("Titulo20"))
     //println(rems.searchReminder("Titulo7"))
     //printReminders(rems.lst_rem)
-    //println(points(rems.lst_rem.last))
+    println(points_gaussion(rems.lst_rem.head))
     //println(sort_smart(rems))
   }
 

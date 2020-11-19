@@ -19,6 +19,8 @@ case class Subject(name: String, rems: List[Reminder] = List(), notes: List[Note
 
   def associate_evaluation(eval: Evaluation): Subject = Subject.associate_evaluation(this, eval)
 
+  def calculate_FinalGrade(): Double = Subject.calculate_FinalGrade(this)
+
 
 }
 
