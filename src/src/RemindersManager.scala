@@ -130,23 +130,26 @@ object RemindersManager {
   def points_gaussion(rem: Reminder): Double = {
     val today = LocalDate.now()
     val days = Period.between(today, rem._4).getDays()
-    val variancia = 4
+    val variancia = 1000000000
     1/sqrt(2*Math.PI*variancia)*Math.exp(-pow(days,2)/(2*variancia))
 
   }
 
+  /*def variancia(): Int = {
+  }*/
+
   def main(args: Array[String]): Unit = {
     val rems: RemindersManager = RemindersManager(List(("Titulo1", "Body1", 3, LocalDate.now(), 0.0),
-      ("Titulo2", "Body2", 1,LocalDate.parse("2020-11-19") , 0.0), ("Titulo3", "Body3", 2, LocalDate.parse("2020-11-19"), 0.0),
-      ("Titulo4", "Body4", 4, LocalDate.parse("2020-11-20"), 0.0), ("Titulo5", "Body5", 4, LocalDate.parse("2020-11-25"), 0.0)))
+      ("Titulo2", "Body2", 1,LocalDate.parse("2020-11-20") , 0.0), ("Titulo3", "Body3", 1, LocalDate.parse("2020-11-23"), 0.0),
+      ("Titulo4", "Body4", 4, LocalDate.parse("2020-11-30"), 0.0), ("Titulo5", "Body5", 4, LocalDate.parse("2020-11-24"), 0.0)))
     //println(rems.sort_by_priority())
     //println(rems.sort_by_date())
     //println(rems.addReminder(("Titulo4", "Body4", 4, LocalDate.now())))
     //println(rems.delReminder("Titulo20"))
     //println(rems.searchReminder("Titulo7"))
     //printReminders(rems.lst_rem)
-    println(points_gaussion(rems.lst_rem.head))
-    //println(sort_smart(rems))
+   // println(points_gaussion(rems.lst_rem.head))
+    println(sort_smart(rems))
   }
 
 }
