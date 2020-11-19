@@ -24,13 +24,5 @@ object Main {
 
   def main(args: Array[String]): Unit = {
 //    mainLoop()
-    //TESTING
-
-    val nb = Notebook(List())
-    val newnb = nb.importFromFile("Testing.txt", "Cunit")
-    newnb.printNotes()
-    val secondNote = ("Title2", "RandomText", "PPM")
-    val thirdnb = newnb.addNote(secondNote)
-    thirdnb.exportToFile(0)
   }
 }
