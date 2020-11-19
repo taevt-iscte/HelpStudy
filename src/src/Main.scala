@@ -16,18 +16,20 @@ object Main {
   def mainLoop(): Unit = {
     val input = getUserInput
     input match {
-    case "ABOUT" => print (about () );
-    case "ASK" =>
-    case "QUIT" => exit(0)
-    case _ =>
-  }
+      case "ABOUT" => print(about());
+      case "ASK" =>
+      case "QUIT" => exit(0)
+      case _ =>
+    }
     mainLoop()
   }
 
+  //Load hs.state file
   def loadState(): Unit = {
 
   }
 
+  //Initialize all the needed variables for the program and generate the hs.state file
   def initHS(): Unit = {
 
   }

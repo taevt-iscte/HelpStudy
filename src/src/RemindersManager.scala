@@ -1,11 +1,9 @@
-import java.time.{LocalDate, LocalDateTime, LocalTime, Period}
-import java.time.temporal.ChronoUnit
+import java.time.{LocalDate, Period}
 
-import scala.math._
 import RemindersManager.{Reminder, Reminder_List}
 
-import scala.None
 import scala.annotation.tailrec
+import scala.math._
 
 case class RemindersManager(val lst_rem: Reminder_List) {
 

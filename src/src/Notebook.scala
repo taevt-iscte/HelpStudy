@@ -1,22 +1,27 @@
-import Notebook.Note
-
-import scala.io.Source
 import java.io._
 import java.nio.file.Paths
 
+import Notebook.Note
+
 import scala.annotation.tailrec
+import scala.io.Source
 
 case class Notebook(notes: List[Note]) {
   def addNote(note: Note): Notebook = Notebook.addNote(this, note)
 
+  //Get a filtered list of notes of a certain Course
   def getNotesbyCUnit(cunit: String): List[Note] = Notebook.getNotesbyCUnit(this, cunit)
 
+  //Import a note from a file, the name of the file is the title
   def importFromFile(file: String, cunit: String): Notebook = Notebook.importFromFile(this, file, cunit)
 
+  //Export a note to a file, the name of the file is the title
   def exportToFile(index: Int): Unit = Notebook.exportToFile(this, index)
 
+  //Prints all notes, filtered by Course if provided
   def printNotes(opt: String = ""): Unit = Notebook.printNotes(this)(opt)
 
+  //Sorts notes by Course by default or TITLE if provided "TITLE"
   def sortNoteBy(opt: String): Notebook = Notebook.sortNotesBy(this, opt)
 }
 
@@ -54,9 +59,14 @@ object Notebook {
       notes match {
         case Nil =>
         case note :: tail => println(s"$index:- Title: ${note._1}\nBody: ${note._2}\nCunit: ${note._3}")
-          aux(tail, index+1)
+          aux(tail, index + 1)
       }
     }
-    if (opt == "") {aux(nb.notes, 0)} else {aux(nb.notes.filter(note => note._3 == opt), 0)}
+
+    if (opt == "") {
+      aux(nb.notes, 0)
+    } else {
+      aux(nb.notes.filter(note => note._3 == opt), 0)
+    }
   }
 }
