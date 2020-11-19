@@ -11,6 +11,10 @@ case class SBlock(date: LocalDate, start_time: LocalTime, end_time: LocalTime, t
 
   def isOverlay(sblock: SBlock): Boolean = SBlock.isOverlay(this, sblock)
 
+  //CHECKS IF BLOCK OF TIME IS TOO LONG (OVER 90 MINUTES)
+
+  def isTooLong(): Boolean = SBlock.isTooLong(this)
+
 }
 
 object SBlock {
@@ -24,5 +28,9 @@ object SBlock {
   def isOverlay(block: SBlock, sblock: SBlock): Boolean = if(block.date == sblock.date
     && ((sblock.start_time.isAfter(block.start_time) && sblock.start_time.isBefore(block.end_time)) ||
     sblock.start_time == block.start_time)) true else false
+
+  //CHECKS IF BLOCK OF TIME IS TOO LONG (OVER 90 MINUTES)
+
+  def isTooLong(sblock: SBlock): Boolean = if(sblock.duration() > 90.longValue()) true else false
 
 }

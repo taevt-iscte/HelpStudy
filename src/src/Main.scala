@@ -1,23 +1,19 @@
 import java.time.format.DateTimeFormatter
 import java.time.{LocalDate, LocalTime}
 
-import About.about
-
-import scala.collection.IterableOnce.iterableOnceExtensionMethods
-
 object Main {
   def main(args: Array[String]): Unit = {
 
-    //TESTES SOBRE A PARTE DO HORÁRIO!!!
+    /*TESTES SOBRE A PARTE DO HORÁRIO!!!
 
-    val bloco1 = SBlock(LocalDate.parse("12-11-2020", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+    val bloco1 = SBlock(LocalDate.parse("19-11-2020", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
       LocalTime.of(9,30,0), LocalTime.of(10,30,0), "Aula TP de MC", "MC")
-    val bloco2 = SBlock(LocalDate.parse("17-11-2020", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
-    LocalTime.of(9,30,0), LocalTime.of(10,30,0), "Aula TP de MC", "CDSI")
+    val bloco2 = SBlock(LocalDate.parse("19-11-2020", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+    LocalTime.of(10,30,0), LocalTime.of(11,30,0), "Aula TP de MC", "CDSI")
     val bloco3 = SBlock(LocalDate.parse("19-11-2020", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
-    LocalTime.of(9,30,0), LocalTime.of(10,30,0), "Aula TP de MC", "MC")
+    LocalTime.of(11,30,0), LocalTime.of(13,0,0), "Aula TP de MC", "MC")
 
-    val horario = Schedule(Nil)
+    val horario = Schedule(Nil,30)
 
     val horario1 = horario.addSBlock(bloco1)
     val horario2 = horario1.addSBlock(bloco2)
@@ -26,6 +22,7 @@ object Main {
     println(horario)
     println(horario1)
     println(horario2)
-    println(horario3.timebyCUnitL7Days("MC"))
+    println(horario3)
+    println(horario3.fatigueAlert())*/
   }
 }
