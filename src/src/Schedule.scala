@@ -1,4 +1,7 @@
-import java.time.LocalDate
+import java.io.{BufferedWriter, FileOutputStream, OutputStreamWriter}
+import java.time.{LocalDate, LocalTime}
+import java.time.format.DateTimeFormatter
+
 import scala.annotation.tailrec
 
 case class Schedule(sblocks: List[SBlock], school_percent: Int) {
@@ -50,6 +53,10 @@ case class Schedule(sblocks: List[SBlock], school_percent: Int) {
 
   //ALERTS USER IF IT IS NOT FOLLOWING THE FUN - STUDY RATIO
   def fatigueAlert(): String = Schedule.fatigueAlert(this)
+
+  //PRINTS SCHEDULE TO A FILE
+
+  def printToFile(): Unit = Schedule.printToFile(this)
 
 
 
@@ -147,6 +154,41 @@ object Schedule {
       bad
     else good
   }
+
+  //PRINTS SCHEDULE TO A FILE
+
+  def printToFile(schedule: Schedule): Unit = {
+    val file = "MySchedule.txt"
+    val writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)))
+    for (x <- schedule.sblocks) {
+      writer.write(x + "\n")
+    }
+    writer.close()
+  }
+
+  /*def main(args: Array[String]): Unit = {
+
+
+        val bloco1 = SBlock(LocalDate.parse("19-11-2020", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+          LocalTime.of(9,30,0), LocalTime.of(10,30,0), "Aula TP de MC", "MC")
+        val bloco2 = SBlock(LocalDate.parse("19-11-2020", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+        LocalTime.of(10,30,0), LocalTime.of(11,30,0), "Aula TP de MC", "CDSI")
+        val bloco3 = SBlock(LocalDate.parse("19-11-2020", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+        LocalTime.of(11,30,0), LocalTime.of(13,0,0), "Aula TP de MC", "MC")
+
+        val horario = Schedule(Nil,30)
+
+        val horario1 = horario.addSBlock(bloco1)
+        val horario2 = horario1.addSBlock(bloco2)
+        val horario3 = horario2.addSBlock(bloco3)
+
+        println(horario)
+        println(horario1)
+        println(horario2)
+        println(horario3)
+        println(horario3.fatigueAlert())
+        horario2.printToFile()
+  }*/
 
 
 
