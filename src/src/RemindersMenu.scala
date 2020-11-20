@@ -21,6 +21,7 @@ object RemindersMenu {
     readLine.trim
   }
 
+  @tailrec
   def mainLoop_Reminders(rem_man: RemindersManager): Unit = {
     showPrompt()
     val input = getUserInput
