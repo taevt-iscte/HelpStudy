@@ -1,4 +1,5 @@
 import java.nio.file.Paths
+import java.time.LocalDate
 
 import About.about
 
@@ -26,7 +27,7 @@ object Main {
       case "ABOUT" => print(about())
       case "DECK" => //deckLoop()
       case "NOTEBOOK" => //notebookLoop()
-      case "REMINDERS" => //remindersLoop()
+      case "REMINDERS" => remindersLoop()
       case "SCHEDULE" => //scheduleLoop()
       case "SUBJECTS" => //subjectsLoop()
       case "QUIT" => exit(0)
@@ -36,7 +37,7 @@ object Main {
   }
 
   def remindersLoop(): Unit = {
-    print("\nESCOLHA UMA DAS SEGUINTES OPÇÕES:")
+    /*print("\nESCOLHA UMA DAS SEGUINTES OPÇÕES:")
     print("\nADD, DELETE, SEARCH, SORT BY PRIORITY, SORT BY DATE OU BACK")
     print("\nINPUT: ")
     val input = getUserInput
@@ -46,7 +47,11 @@ object Main {
 
       case "BACK" => mainLoop()
       case _ =>
-    }
+    }*/
+    val rems: RemindersManager = RemindersManager(List(("Titulo1", "Body1", 3, LocalDate.now(), 0.0),
+      ("Titulo2", "Body2", 1,LocalDate.parse("2020-11-20") , 0.0), ("Titulo3", "Body3", 1, LocalDate.parse("2020-11-23"), 0.0),
+      ("Titulo4", "Body4", 4, LocalDate.parse("2020-11-30"), 0.0), ("Titulo5", "Body5", 4, LocalDate.parse("2020-11-24"), 0.0)))
+    RemindersMenu.mainLoop_Reminders(rems)
   }
 
   //Load hs.state file
