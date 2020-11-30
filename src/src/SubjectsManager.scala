@@ -18,6 +18,10 @@ object SubjectsManager {
     SubjectsManager(subj_man.subjs.sortBy(_.name))
   }
 
+  def searchSubject(subj_man: SubjectsManager, title: String): Option[Subject] = {
+    Option((subj_man.subjs filter ( s => s.name.equals(title))) (0))
+  }
+
   @tailrec
   def printReminders(lst: List[Subject]) : Unit =
     lst match {

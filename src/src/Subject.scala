@@ -17,7 +17,7 @@ case class Subject(name: String, rems: List[Reminder] = List(), notes: List[Note
 
   def associate_note(note: Note): Subject = Subject.associate_note(this, note)
 
-  def associate_evaluation(eval: Evaluation): Subject = Subject.associate_evaluation(this, eval)
+  def add_evaluation(eval: Evaluation): Subject = Subject.add_evaluation(this, eval)
 
   def calculate_FinalGrade(): Double = Subject.calculate_FinalGrade(this)
 
@@ -39,7 +39,7 @@ object Subject {
     Subject(subj.name, subj.rems, note :: subj.notes, subj.evals)
   }
 
-  def associate_evaluation(subj: Subject, eval: Evaluation): Subject = {
+  def add_evaluation(subj: Subject, eval: Evaluation): Subject = {
     val rem = ("Avaliação: " + subj.name, "", 4, eval._1, 0.0)
     associate_reminder(subj, rem)
     Subject(subj.name, subj.rems, subj.notes, eval :: subj.evals)
@@ -60,8 +60,8 @@ object Subject {
     val eval2 = (LocalDate.parse("2020-12-18"), (70.0, 15))
     val subj = Subject("PPM")
     println(subj.associate_reminder(("Titulo1", "Body1", 3, LocalDate.now(), 0.0)))
-    val subj1 = associate_evaluation(subj, eval1)
-    val subj2 = associate_evaluation(subj1, eval2)
+    val subj1 = add_evaluation(subj, eval1)
+    val subj2 = add_evaluation(subj1, eval2)
     println(subj2.evals)
     println(calculate_FinalGrade(subj2))
   }
