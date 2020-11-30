@@ -73,10 +73,10 @@ object Schedule {
   //ADDS ONE BLOCK OF TIME TO THE SCHEDULE
 
   def addSBlock(schedule: Schedule, sblock: SBlock): Schedule = if(sblock.isTooLong()) {
-    println("Não deve inserir este bloco no horário porque é muito longo!")
+    println("YOU SHOULD NOT INSERT THIS BLOCK ON THE SCHEDULE BECAUSE IT IS TOO LONG (MORE THAN 90 MINUTES)!")
     schedule
   } else if(schedule.willOverlay(sblock)) {
-    println("Não pode inserir este bloco no horário porque irá existir uma sobreposição!")
+    println("YOU CANNOT INSERT THIS BLOCK ON THE SCHEDULE BECAUSE IT WILL OVERLAY ANOTHER!")
     schedule
   } else Schedule(sblock :: schedule.sblocks, schedule.school_percent)
 
@@ -148,8 +148,8 @@ object Schedule {
 
   //ALERTS USER IF IT IS NOT FOLLOWING THE FUN - STUDY RATIO
   def fatigueAlert(schedule: Schedule): String = {
-    val bad = "Hoje tem muito tempo alocado à escola! Se possível, distribua melhor as suas tarefas para ser mais produtivo! :)"
-    val good = "O seu dia está com um bom equilíbrio entre a escola e a diversão! Tenha um bom dia de estudo! :)"
+    val bad = "TODAY YOU ARE SPENDING TOO MUCH TIME WITH SCHOOL! IF POSSIBLE PLAN YOUR DAY DIFFERENTLY TO BE MORE PRODUCTIVE! :)"
+    val good = "YOUR DAY HAS A GOOD BALANCE BETWEEN SCHOOL AND FUN TIME! HAVE A NICE DAY! :)"
     if(timeSpentBySchoolToday(schedule) > 960.longValue()*(schedule.school_percent/100.floatValue()))
       bad
     else good
