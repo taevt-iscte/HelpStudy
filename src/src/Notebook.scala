@@ -35,7 +35,7 @@ object Notebook {
 
   def importFromFile(nb: Notebook, file: String, cunit: String): Notebook = {
     val body = Source.fromFile(Paths.get(file).toAbsolutePath.toString).getLines.mkString
-    val newNote = (file.stripSuffix(".txt"), body, cunit)
+    val newNote = (Paths.get(file).getFileName.toString.stripSuffix(".TXT"), body, cunit)
     Notebook.addNote(nb, newNote)
   }
 

@@ -61,15 +61,15 @@ object Main {
         val cunit = getUserInput
         notebookLoop(notebook.importFromFile(fpath,cunit))
 
-      case "EXPORT_TO_FILE" => print("\nNOTE INDEX (EX:. 0: ")
+      case "EXPORT_TO_FILE" => print("\nNOTE INDEX (EX:. 0:) ")
         val note_index = getUserInput.toInt
         notebook.exportToFile(note_index)
 
-      case "SORT_NOTES" => print("\nWRITE TITLE FOR SORT BY TITLE OR PRESS ENTER FOR SORT BY CUNIT: ")
+      case "PRINT_NOTES" => print("\nPRESS ENTER FOR ALL OR SPECIFY CURRICULAR UNIT: ")
         val choice = getUserInput
         print("\n"+notebook.printNotes(choice))
 
-      case "PRINT_NOTES" => print("\nPRESS ENTER FOR ALL OR SPECIFY CURRICULAR UNIT: ")
+      case "SORT_NOTES" => print("\nWRITE TITLE FOR SORT BY TITLE OR PRESS ENTER FOR SORT BY CUNIT: ")
         val choice = getUserInput
         notebookLoop(notebook.sortNoteBy(choice))
 
